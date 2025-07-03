@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row-3 mt-4">
+  <div class="col-8 offset-2">
+    <h1>Edit Listing</h1>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+      <div class="mb-3 mt-4">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">
+          Please provide a title.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description"  name="listing[description]" placeholder="Enter Description" class="form-control" required><%= listing.description %></textarea>
+        <div class="invalid-feedback">
+          Please provide a description.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input
+          type="text"
+          name="listing[image]"
+          value="<%= listing.image %>"
+          class="form-control"
+          required
+          />
+        <div class="invalid-feedback">
+          Please provide an image URL.
+        </div>
+      </div>
+
+      <div class="row pl-0 pr-0 g-2">
+        <div class="mb-3 col-md-4">
+          <label for="price">Enter Price</label>
+          <input
+            type="number"
+            name="listing[price]"
+            value="<%= listing.price %>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">
+            Please provide a price.
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="country">Country</label>
+          <input
+            type="text"
+            name="listing[country]"
+            value="<%= listing.country %>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">
+            Please provide a country.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          name="listing[location]"
+          value="<%= listing.location %>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">
+          Please provide a location.
+        </div>
+      </div>
+
+      <button class="btn mb-4 add-btn ">Edit</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>
+<script>
+document.querySelector('.needs-validation').addEventListener('submit', function(e) {
+  var textarea = document.getElementById('description');
+  if (textarea) {
+    textarea.value = textarea.value.trim();
+  }
+});
+</script>
